@@ -35,8 +35,11 @@ jobs:
         uses: actions/configure-pages@v5
       - name: Prepare site
         run: |
+          rm -rf _site
           mkdir -p _site/club-tags
           cp -r "./Club Tag Inspector/." _site/club-tags/
+      - name: Show site contents
+        run: find _site -maxdepth 3 -type f
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
